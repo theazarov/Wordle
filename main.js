@@ -34,17 +34,17 @@ function initBoard() {
 }
 initBoard();
 
-document.getElementById('keyboard-cont').addEventListener('click', (e) =>{
-  const target = e.target
+document.getElementById("keyboard-cont").addEventListener("click", (e) => {
+  const target = e.target;
 
-  if(!target.classList.contains('keyboard-button')){
-    return
+  if (!target.classList.contains("keyboard-button")) {
+    return;
   }
 
-  let key = target.textContent
+  let key = target.textContent;
 
-  document.dispatchEvent(new KeyboardEvent('keydown', {'key':key}))
-})
+  document.dispatchEvent(new KeyboardEvent("keydown", { key: key }));
+});
 
 //обработчик нажатия клавиш
 document.addEventListener("keydown", (e) => {
@@ -156,7 +156,7 @@ function checkGuess() {
     //получаем доступ к текущей клетке
     let box = row.children[i];
 
-    let letter = currentGuess[i]
+    let letter = currentGuess[i];
 
     //смотрим на каком месте в исходном слове стоит текущая буква
     let letterPosition = righrGuess.indexOf(currentGuess[i]);
@@ -176,7 +176,7 @@ function checkGuess() {
     }
     //применяем выбранный цвет к фону клетки
     box.style.backgroundColor = letterColor;
-    shadeKeyBoard(letter, letterColor)
+    shadeKeyBoard(letter, letterColor);
   }
 
   // если мы угадали
@@ -205,20 +205,20 @@ function checkGuess() {
   }
 }
 
-function shadeKeyBoard(letter, color){
-  for(const elem of document.getElementsByClassName('keyboard-button')){
-    if(elem.textContent === letter){
-      let oldColor = elem.style.backgroundColor
+function shadeKeyBoard(letter, color) {
+  for (const elem of document.getElementsByClassName("keyboard-button")) {
+    if (elem.textContent === letter) {
+      let oldColor = elem.style.backgroundColor;
 
-      if(oldColor === "green"){
-        return
+      if (oldColor === "green") {
+        return;
       }
 
-      if(oldColor === 'yellow' && color !== 'green'){
-        return
+      if (oldColor === "yellow" && color !== "green") {
+        return;
       }
 
-      elem.style.backgroundColor = color
+      elem.style.backgroundColor = color;
     }
   }
 }
